@@ -1,14 +1,13 @@
-# Use official Maven + JDK 17 base image
-FROM maven:3.9.6-eclipse-temurin-17
+FROM maven:3.9-eclipse-temurin-17
 
-# Set working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the entire project to the container
+# Copy all project files
 COPY . .
 
-# Build the project (compiles code, runs unit tests, downloads dependencies)
-RUN mvn clean install
+# Optional: Build the project during image build (can be removed if you want faster builds)
+# RUN mvn clean install
 
-# Default command: run BDD tests
-CMD ["mvn", "test"]
+# Command to run tests when the container starts
+CMD ["mvn", "clean", "install"]
