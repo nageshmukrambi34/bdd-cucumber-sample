@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16c07f-f0fd-4c42-8030-7c88fff5017d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/run-tests.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/test-runner.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/test-runner.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/docker-build-test-push.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/run-tests.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/test-runner.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cucumber-reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/runners/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/runners/TestRunner.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
