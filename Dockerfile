@@ -1,23 +1,13 @@
-# Start from Maven base image
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM maven:3.9.3-eclipse-temurin-17 as builder
 
-# Set working directory
 WORKDIR /app
-
-# Copy project files
 COPY . .
-
-# Build the project (runs mvn clean install)
 RUN mvn clean install
 
-# ---- Run stage ----
 FROM eclipse-temurin:17-jdk
-
-# Set working directory
 WORKDIR /app
+COPY --from=builder /app /app
 
-# Copy built jar from previous stage
-COPY --from=build /app/target/*.jar app.jar
+RUN mkdir -p /app/reports
 
-# Set entrypoint
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["mvn", "test", "-Dcucumber.options=--plugin html:/app/reports/cucumber.html"]

@@ -1,4 +1,4 @@
-name: Run Tests & Upload Reports
+name: Run Cucumber Tests in Docker
 
 on:
   workflow_dispatch:
@@ -8,24 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
       - name: Pull Docker image
         run: docker pull nageshmukrambi/bdd-cucumber-sample:main
 
-      - name: Create local reports folder
+      - name: Create output folder
         run: mkdir -p reports
 
-      - name: Execute tests and save report
+      - name: Run tests and save report
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/reports:/app/reports \
             nageshmukrambi/bdd-cucumber-sample:main
 
-      - name: Upload test report
+      - name: Upload HTML report
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-html-report

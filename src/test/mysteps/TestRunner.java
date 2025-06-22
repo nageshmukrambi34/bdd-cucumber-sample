@@ -1,15 +1,14 @@
 package runners;
 
-import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/mysteps",  // Path to your .feature files
-        glue = "steps",                            // Package containing step definitions
-        plugin = {"pretty", "html:target/cucumber-reports.html"}, // Output reports
-        monochrome = true                          // Clean console output
+        features = "src/test/mysteps",
+        glue = {"steps"},
+        plugin = {"html:/app/reports/cucumber.html", "summary"},
+        monochrome = true
 )
-public class TestRunner {
-}
+public class TestRunner {}
