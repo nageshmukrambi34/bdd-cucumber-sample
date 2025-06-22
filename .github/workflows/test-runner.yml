@@ -2,7 +2,8 @@ name: CI Docker Build and Push
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '**'  # This triggers on any branch push (not just 'main')
 
 jobs:
   build:
@@ -21,9 +22,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Convert branch name to lowercase
+        id: lowercase
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF##*/} | tr '[:upper:]' '[:lower:]')"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: nageshmukrambi/bdd-cucumber-sample:latest
+          tags: nageshmukrambi/bdd-cucumber-sample:${{ steps.lowercase.outputs.branch }}
