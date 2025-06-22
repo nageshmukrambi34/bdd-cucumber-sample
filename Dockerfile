@@ -1,13 +1,23 @@
-FROM maven:3.9-eclipse-temurin-17
+# Start from Maven base image
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 # Set working directory
 WORKDIR /app
 
-# Copy all project files
+# Copy project files
 COPY . .
 
-# Optional: Build the project during image build (can be removed if you want faster builds)
-# RUN mvn clean install
+# Build the project (runs mvn clean install)
+RUN mvn clean install
 
-# Command to run tests when the container starts
-CMD ["mvn", "clean", "install"]
+# ---- Run stage ----
+FROM eclipse-temurin:17-jdk
+
+# Set working directory
+WORKDIR /app
+
+# Copy built jar from previous stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Set entrypoint
+ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bdd-cucumber-sample" target="18" />
+      <module name="bdd-cucumber-sample" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

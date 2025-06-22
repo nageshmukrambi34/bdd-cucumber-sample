@@ -9,4 +9,4 @@ import io.cucumber.junit.CucumberOptions;
         features = "src/test/resources/features",
         glue = "steps"
 )
-public class TestRunner{}
+public class TestRunner {}

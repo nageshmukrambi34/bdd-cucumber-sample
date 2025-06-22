@@ -1,49 +1,104 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bdd</groupId>
-    <artifactId>cucumber-sample</artifactId>
-    <version>1.0</version>
+
+    <groupId>com.example</groupId>
+    <artifactId>bdd-cucumber-sample</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Cucumber Java Selenium Framework</name>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <cucumber.version>7.12.1</cucumber.version>
+        <selenium.version>4.17.0</selenium.version>
+        <junit.version>4.13.2</junit.version>
+    </properties>
 
     <dependencies>
+        <!-- Cucumber dependencies -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.12.1</version>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.12.1</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-plugin</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>datatable</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.17.0</version>
+            <version>${selenium.version}</version>
         </dependency>
+
+        <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Cucumber HTML Reports (optional) -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>compile</scope>
+            <groupId>io.cucumber</groupId>
+            <artifactId>html-formatter</artifactId>
+            <version>20.3.1</version>
+        </dependency>
+
+        <!-- Logging (optional) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.12</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Compiler Plugin -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire Plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
                 <configuration>
-                    <source>18</source>
-                    <target>18</target>
+                    <includes>
+                        <include>**/runners/*TestRunner*.java</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
