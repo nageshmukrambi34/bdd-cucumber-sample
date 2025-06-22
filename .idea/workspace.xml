@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16c07f-f0fd-4c42-8030-7c88fff5017d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bdd-cucumber-sample.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bdd-cucumber-sample.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/runners/TestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/steps/MyStepsdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/mysteps/MyStepsdefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/google.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/mysteps/google.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/resources/google.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/google.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/runners/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/runners/TestRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/steps/MyStepsdefs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/mysteps/MyStepsdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/steps/MyStepsdefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,11 +173,6 @@
           <url>file://$PROJECT_DIR$/src/main/test/java/runners/TestRunner.java</url>
           <line>13</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/mysteps/TestRunner.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
