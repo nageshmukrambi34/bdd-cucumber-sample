@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: nageshmukrambi34/bdd-cucumber-sample:latest
+          tags: nageshmukrambi/bdd-cucumber-sample:latest
