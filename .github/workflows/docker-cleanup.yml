@@ -1,0 +1,22 @@
+name: Cleanup Old Docker Tags
+
+on:
+  workflow_dispatch:  # You can also set it to run weekly or on push
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old Docker tags (except 'latest' and 'main')
+        run: |
+          echo "Fetching tags..."
+          tags=$(curl -s -u ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_CLEANUP_TOKEN }} \
+            "https://hub.docker.com/v2/repositories/nageshmukrambi/bdd-cucumber-sample/tags?page_size=100" \
+            | jq -r '.results[].name' | grep -vE '^(latest|main)$')
+
+          for tag in $tags; do
+            echo "Deleting tag: $tag"
+            curl -s -X DELETE \
+              -u ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_CLEANUP_TOKEN }} \
+              "https://hub.docker.com/v2/repositories/nageshmukrambi/bdd-cucumber-sample/tags/$tag/"
+          done
