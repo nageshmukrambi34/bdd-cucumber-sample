@@ -3,7 +3,9 @@ package steps;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 public class MyStepsdefs {
     WebDriver driver;
