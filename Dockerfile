@@ -11,12 +11,13 @@ RUN apt-get update && apt-get install -y wget unzip curl gnupg \
     libcups2 libdbus-1-3 libxshmfence1 && \
     wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chrome-linux64.zip && \
     unzip chrome-linux64.zip -d /usr/local && \
-    mv /usr/local/chrome-linux64/google-chrome /usr/local/bin/google-chrome && \
+    mv /usr/local/chrome-linux64/chrome /usr/local/bin/google-chrome && \
     rm chrome-linux64.zip && \
     wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chromedriver-linux64.zip && \
     unzip chromedriver-linux64.zip -d /usr/local/bin/ && \
     chmod +x /usr/local/bin/chromedriver && \
     rm chromedriver-linux64.zip
+
 
 
 # Copy your code into the container
