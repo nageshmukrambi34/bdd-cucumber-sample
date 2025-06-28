@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
@@ -18,20 +19,16 @@ public class MyStepsdefs {
     @Given("I open Google homepage")
     public void openGoogle() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--remote-debugging-port=9222");
 
-        // Explicitly set the binary you installed in Docker
+        // Use writable user-data-dir inside container
+        String userDataDir = "/app/tmp/chrome-profile-" + UUID.randomUUID();
+        new File(userDataDir).mkdirs(); // ensure directory exists
+        options.addArguments("--user-data-dir=" + userDataDir);
+
+        // Explicitly set Chrome binary location
         options.setBinary("/usr/local/bin/google-chrome");
 
-        // Standard headless flags for Docker
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-
-        // Unique user-data-dir per run to avoid session errors
-
-
-
-        // Launch driver
         driver = new ChromeDriver(options);
         driver.get("https://www.google.com");
     }
