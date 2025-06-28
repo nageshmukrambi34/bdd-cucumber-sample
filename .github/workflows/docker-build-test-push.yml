@@ -2,30 +2,31 @@ name: Run Cucumber BDD Tests
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
 
 jobs:
-  test:
+  bdd-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
         with:
-          distribution: temurin
-          java-version: 17
+          distribution: 'temurin'
+          java-version: '17'
 
-      - name: Install Chrome and Chromedriver (Static version)
+      - name: Install Chrome and Chromedriver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget unzip curl gnupg \
-            libnss3 libgconf-2-4 libxi6 libxcb1 libxcomposite1 libxcursor1 \
-            libxdamage1 libxrandr2 libxss1 libasound2 libatk1.0-0 libatk-bridge2.0-0 \
-            libcups2 libdbus-1-3 libxshmfence1
+            libnss3 libxi6 libxcb1 libxcomposite1 libxcursor1 \
+            libxdamage1 libxrandr2 libxss1 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdbus-1-3 libxshmfence1 libxext6 libxfixes3 libexpat1 \
+            libglib2.0-0 libgtk-3-0 libpango-1.0-0 libpangocairo-1.0-0 fonts-liberation
 
           wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chrome-linux64.zip
           unzip chrome-linux64.zip -d /usr/local
@@ -41,10 +42,10 @@ jobs:
           google-chrome --version
           chromedriver --version
 
-      - name: Set up Maven
-        run: mvn -v
+      - name: Build with Maven
+        run: mvn clean compile
 
-      - name: Run Cucumber BDD Tests
+      - name: Run Cucumber Tests
         run: mvn test
 
       - name: Upload Cucumber HTML reports
@@ -52,4 +53,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-html-report
-          path: target/cucumber-html-reports
+          path: target/cucumber-html-reports/
