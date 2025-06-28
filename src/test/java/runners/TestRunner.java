@@ -1,4 +1,4 @@
-package ;
+package runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/mysteps",
+        features = "src/test/resources/mysteps",
         glue = {"steps"},
         plugin = {
                 "pretty",
@@ -15,4 +15,4 @@ import org.junit.runner.RunWith;
         },
         monochrome = true
 )
-class TestRunner {}
+public class TestRunner {}

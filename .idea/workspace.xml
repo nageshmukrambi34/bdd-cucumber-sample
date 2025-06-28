@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16c07f-f0fd-4c42-8030-7c88fff5017d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/bdd-cucumber-sample.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bdd-cucumber-sample.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/mysteps/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runners/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/runners/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runners/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/google.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mysteps/google.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/mysteps/MyStepsdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/MyStepsdefs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +64,11 @@
       <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\main\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\resources\mysteps" />
+      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\java\steps" />
+      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\resources" />
       <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\java\runners" />
       <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\mysteps" />
-      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\test\resources" />
-      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\main\test\resources\featuresa" />
-      <recent name="C:\Users\MWCL\Desktop\cucumber-java-dockerpush-framework\bdd-cucumber-sample\src\main\test\java" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TestRunner (1)">
