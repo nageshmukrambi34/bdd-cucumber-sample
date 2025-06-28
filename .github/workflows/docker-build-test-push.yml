@@ -28,12 +28,17 @@ jobs:
         run: |
           docker build -t bdd-cucumber-sample .
 
-      - name: Run Tests and Generate Report
+      - name: Run Tests and Generate Reports in Docker
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/cucumber-reports:/app/cucumber-reports \
-            bdd-cucumber-sample mvn clean test verify
+            bdd-cucumber-sample mvn test verify
           
+      - name: Check report contents
+        run: |
+          echo "Listing contents of cucumber-reports..."
+          ls -l cucumber-reports || echo "No files found."    
+
       - name: Upload test results
         uses: actions/upload-artifact@v4
 
