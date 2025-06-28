@@ -28,8 +28,8 @@ public class MyStepsdefs {
         options.addArguments("--disable-dev-shm-usage");
 
         // Unique user-data-dir per run to avoid session errors
-        String userDataDir = "/tmp/chrome-user-data-" + UUID.randomUUID();
-        options.addArguments("--user-data-dir=" + userDataDir);
+
+
 
         // Launch driver
         driver = new ChromeDriver(options);

@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y wget unzip curl gnupg \
     chmod +x /usr/local/bin/chromedriver && \
     rm -rf chromedriver-linux64.zip /usr/local/chromedriver-linux64
 
+RUN mkdir -p /app/tmp && chmod -R 777 /app/tmp
 COPY . .
 
 RUN mvn clean compile
