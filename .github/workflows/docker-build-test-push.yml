@@ -1,4 +1,4 @@
-name: Run BDD Tests
+name: Run Cucumber BDD Tests
 
 on:
   push:
@@ -10,39 +10,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Java 17
-        uses: actions/setup-java@v3
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
-      - name: Install Google Chrome
+      - name: Install Chrome and Chromedriver (Static version)
         run: |
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-          google-chrome --version
+          sudo apt-get install -y wget unzip curl gnupg \
+            libnss3 libgconf-2-4 libxi6 libxcb1 libxcomposite1 libxcursor1 \
+            libxdamage1 libxrandr2 libxss1 libasound2 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdbus-1-3 libxshmfence1
 
-      - name: Install ChromeDriver (matching version)
-        run: |
-          CHROME_VERSION=$(google-chrome --version | sed 's/[^0-9.]*\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/')
-          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          wget -q "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/chromedriver
+          wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chrome-linux64.zip
+          unzip chrome-linux64.zip -d /usr/local
+          sudo ln -s /usr/local/chrome-linux64/chrome /usr/local/bin/google-chrome
+          rm chrome-linux64.zip
+
+          wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip -d /usr/local
+          sudo mv /usr/local/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
+          rm -rf chromedriver-linux64.zip /usr/local/chromedriver-linux64
+
+          google-chrome --version
           chromedriver --version
 
-      - name: Run Maven tests
-        run: mvn clean test
+      - name: Set up Maven
+        run: mvn -v
+
+      - name: Run Cucumber BDD Tests
+        run: mvn test
 
       - name: Upload Cucumber HTML reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-reports
-          path: target/cucumber-reports/
+          name: cucumber-html-report
+          path: target/cucumber-html-reports
