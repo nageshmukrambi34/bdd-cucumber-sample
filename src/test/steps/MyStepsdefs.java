@@ -26,6 +26,7 @@ public class MyStepsdefs {
 
     @Then("I verify the title is {string}")
     public void verifyTitle(String expectedTitle) {
+        System.out.println("insided verify");
         String actualTitle = driver.getTitle();
         Assert.assertEquals(expectedTitle, actualTitle);
         driver.quit();
