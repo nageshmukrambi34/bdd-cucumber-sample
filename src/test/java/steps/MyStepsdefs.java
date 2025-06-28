@@ -14,13 +14,9 @@ public class MyStepsdefs {
 
     @Given("I open Google homepage")
     public void openGoogle() {
-        // Set Chrome options for headless mode
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // or "--headless=chrome" for older versions
-        options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1920,1080");
-
-        driver = new ChromeDriver(options);
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");  // ✅ Critical for Docker
+        driver = new ChromeDriver(options);  // ✅ Use options
         driver.get("https://www.google.com");
     }
 
