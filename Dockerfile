@@ -6,5 +6,5 @@ RUN mvn clean install
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
 COPY --from=builder /app/target/bdd-cucumber-sample-*.jar /app/app.jar
-COPY --from=builder /app/cucumber-reports /app/cucumber-reports
+RUN mkdir -p /app/cucumber-reports
 CMD ["java", "-jar", "/app/app.jar"]
