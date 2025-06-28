@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Docker container to execute tests
         run: |
-          docker run --rm -v ${{ github.workspace }}/cucumber-reports:/app/cucumber-reports bdd-cucumber-sample
+          docker run --rm -v ${{ github.workspace }}/cucumber-reports:/app/cucumber-reports bdd-cucumber-sample mvn test
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
