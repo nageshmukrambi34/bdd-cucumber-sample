@@ -21,12 +21,12 @@ public class MyStepsdefs {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--remote-debugging-port=9222");
 
-        // Use writable user-data-dir inside container
         String userDataDir = "/app/tmp/chrome-profile-" + UUID.randomUUID();
-        new File(userDataDir).mkdirs(); // ensure directory exists
+        File dir = new File(userDataDir);
+        if (!dir.mkdirs()) {
+            System.err.println("Could not create user-data-dir: " + userDataDir);
+        }
         options.addArguments("--user-data-dir=" + userDataDir);
-
-        // Explicitly set Chrome binary location
         options.setBinary("/usr/local/bin/google-chrome");
 
         driver = new ChromeDriver(options);
