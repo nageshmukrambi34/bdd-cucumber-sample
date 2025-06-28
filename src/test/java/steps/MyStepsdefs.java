@@ -19,15 +19,12 @@ public class MyStepsdefs {
     @Given("I open Google homepage")
     public void openGoogle() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--remote-debugging-port=9222");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-debugging-port=9222");
+        options.addArguments("--user-data-dir=/tmp/chrome-profile"); // ✅ Use /tmp instead of /app/tmp
 
-        String userDataDir = "/app/tmp/chrome-profile-" + UUID.randomUUID();
-        File dir = new File(userDataDir);
-        if (!dir.mkdirs()) {
-            System.err.println("Could not create user-data-dir: " + userDataDir);
-        }
-        options.addArguments("--user-data-dir=" + userDataDir);
-        options.setBinary("/usr/local/bin/google-chrome");
 
         driver = new ChromeDriver(options);
         driver.get("https://www.google.com");
