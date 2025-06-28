@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y wget unzip curl gnupg \
     wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chrome-linux64.zip && \
     unzip chrome-linux64.zip -d /usr/local && \
     mv /usr/local/chrome-linux64/chrome /usr/local/bin/google-chrome && \
+    chmod +x /usr/local/bin/google-chrome && \
     rm chrome-linux64.zip && \
     # Install Chromedriver
     wget -q https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.49/linux64/chromedriver-linux64.zip && \
