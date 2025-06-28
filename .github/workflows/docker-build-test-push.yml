@@ -33,7 +33,7 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}/cucumber-reports:/app/cucumber-reports \
             bdd-cucumber-sample mvn test verify
-          
+
       - name: Check report contents
         run: |
           echo "Listing contents of cucumber-reports..."
