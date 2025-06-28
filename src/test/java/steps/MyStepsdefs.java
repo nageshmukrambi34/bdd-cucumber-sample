@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.UUID;
+
 import static org.junit.Assert.assertEquals;
 
 public class MyStepsdefs {
@@ -16,6 +18,8 @@ public class MyStepsdefs {
     public void openGoogle() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+        String userDataDir = "/tmp/chrome-user-data-" + UUID.randomUUID();
+        options.addArguments("--user-data-dir=" + userDataDir);
         driver = new ChromeDriver(options);
         driver.get("https://www.google.com");
     }
