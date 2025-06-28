@@ -21,7 +21,7 @@
     </properties>
 
     <dependencies>
-        <!-- Cucumber dependencies -->
+        <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -64,14 +64,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Cucumber HTML Reports (optional) -->
+        <!-- Cucumber HTML Formatter -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>html-formatter</artifactId>
             <version>20.3.1</version>
         </dependency>
 
-        <!-- Logging (optional) -->
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -79,22 +79,8 @@
         </dependency>
     </dependencies>
 
-
-
-
-<build>
+    <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.yourpackage.YourMainClass</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
             <!-- Compiler Plugin -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -105,7 +91,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin for running tests -->
+            <!-- Surefire Plugin for running Cucumber tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -114,6 +100,42 @@
                     <includes>
                         <include>**/runners/*TestRunner*.java</include>
                     </includes>
+                </configuration>
+            </plugin>
+
+            <!-- Optional: Cucumber Reporting Plugin -->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.7.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-cucumber-html-reports</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Cucumber Test Report</projectName>
+                            <outputDirectory>cucumber-reports</outputDirectory>
+                            <jsonFiles>
+                                <param>cucumber-reports/cucumber.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Optional: Main Class (if needed to run jar) -->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.yourpackage.YourMainClass</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
